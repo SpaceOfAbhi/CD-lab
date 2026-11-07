@@ -24,19 +24,37 @@ int pos(char c){
 void parse(){
     int x,y;
     char a;
-  printf("\nenter");
+  printf("\nenter : ");
   scanf("%49s",s);
   stack[++top]='$';
   while(1){
     for(int j=0;j<=top;j++){
         printf("%c",stack[j]);
     }
-    printf("%s",s+i);
+    printf("\t%s\t",s+i);
     if(stack[top]=='$' && s[i]=='$'){
         printf("\nValid");
+        return;
     }
 
-    x=
+    x=pos(stack[top]);
+    y=pos(s[i]);
+
+    if(x==-1 || y==-1){
+        printf("\ninvalid");
+        return;
+    }
+    if(table[x][y]=='<' || table[x][y]=='='){
+        stack[++top]=s[i++];
+        printf("Shift\n");
+    }
+    else if(table[x][y]=='>'){
+        a=stack[top--];
+        printf("Reduce %c\n",a);
+    }
+    else{
+        printf("\nInvalid");
+    }
 
   }
 }
