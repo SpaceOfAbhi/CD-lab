@@ -18,7 +18,6 @@ void main(){
 
                 for(int j=i;in[j]!='\0';j++){
                     in[j]=in[j+2];
-
                 }
                 i--;
                 k++;
